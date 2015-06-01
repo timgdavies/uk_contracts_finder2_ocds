@@ -41,7 +41,9 @@ for notice in contract_list['noticeList']:
     if r.status_code == 200:
         release = r.json()
         release_id = str(release['releases'][0]['id'])
-        scraperwiki.sqlite.save(unique_keys=['id'], data={"id": release_id, "data": json.dumps(release)})
+        ocid = str(release['releases'][0]['ocid'])
+        scraperwiki.sqlite.save(unique_keys=['id'], data={"id": release_id, "ocid": ocid,"release": json.dumps(release)})
     else:
         # We should extend the scraper to log failed notices somewhere
         print "Error fetching " + notice_id
+
