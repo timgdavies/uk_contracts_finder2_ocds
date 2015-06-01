@@ -45,5 +45,6 @@ for notice in contract_list['noticeList']:
         scraperwiki.sqlite.save(unique_keys=['id'], data={"id": release_id, "ocid": ocid,"release": json.dumps(release)})
     else:
         # We should extend the scraper to log failed notices somewhere
+        scraperwiki.sqlite.save(unique_keys=['id'], table_name="errors", data={"id": release_id, "date": str(date.today())})
         print "Error fetching " + notice_id
 
