@@ -26,7 +26,7 @@ def search_notices(s_type ='Contract',s_status=['Open'],s_publishedFrom=None,s_p
     return r.json()
 
 from_date = str(date.today() - timedelta(days=3))
-contract_list = search_notices(s_type ='Contract',s_status=['Open'],s_publishedFrom=from_date)
+contract_list = search_notices(s_type ='Contract',s_status=['Open','Closed','Withdrawn','Awarded'],s_publishedFrom=from_date)
 print "Total results found: " + str(contract_list['hitsCount'])
 
 for notice in contract_list['noticeList']:
