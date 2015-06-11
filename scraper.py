@@ -37,7 +37,7 @@ for notice in contract_list['noticeList']:
     notice_id = notice['item']['id']
     
     print api_url+'/Published/Notice/OCDS/'+str(notice_id)
-    r = requests.get(api_url+'/Published/Notice/OCDS/'+notice_id,headers={'content-type': 'application/json'})
+    r = requests.get(api_url+'/Published/Notice/OCDS/'+notice_id,headers={'content-type': 'application/json'},verify=False)
     if r.status_code == 200:
         release = r.json()
         release_id = str(release['releases'][0]['id'])
