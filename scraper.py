@@ -22,7 +22,7 @@ def search_notices(s_type ='Contract',s_status=['Open'],s_publishedFrom=None,s_p
         search_object['searchCriteria']['publishedFrom'] = s_publishedTo
     print(search_object)
     
-    r = requests.post(api_url+'/Searches/Search',data=json.dumps(search_object),headers={'content-type': 'application/json'})
+    r = requests.post(api_url+'/Searches/Search',data=json.dumps(search_object),headers={'content-type': 'application/json'},verify=False)
     return r.json()
 
 from_date = str(date.today() - timedelta(days=3))
