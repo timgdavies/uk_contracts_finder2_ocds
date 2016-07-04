@@ -40,7 +40,7 @@ for notice in contract_list['noticeList']:
     r = requests.get(api_url+'/Published/Notice/OCDS/'+notice_id,headers={'content-type': 'application/json'},verify=False)
     if r.status_code == 200:
         release = r.json()
-        release_id = str(release['releases'][0]['id'])
+        release_id = str(release['releases'][0]['id']) + str(release['releases'][0]['date'])
         ocid = str(release['releases'][0]['ocid'])
         scraperwiki.sqlite.save(unique_keys=['id'], data={"id": release_id, "ocid": ocid,"release": json.dumps(release)})
     else:
